@@ -34,7 +34,8 @@ The whole tool runs at **$0**: free-tier SerpAPI + Python + regex parsing.
 
 ```
 flight_tool/
-├── main.py            # Orchestrator: parse -> fetch -> filter -> score -> report
+├── main.py            # CLI orchestrator: parse -> fetch -> filter -> score -> report
+├── web.py             # Optional localhost web UI (Flask) — same engine, HTML view
 ├── brief_parser.py    # Regex parser: .txt brief -> structured JSON ($0, no API)
 ├── config.py          # Scoring weights, thresholds, airport metadata (tune here)
 ├── api.py             # SerpAPI calls + local JSON cache + sample-data fallback
@@ -102,6 +103,21 @@ early-departure penalty, but still won on price + travel time"*) instead of hidi
 
 **No API key? It still runs** on built-in sample data. To force fresh live data,
 delete the cache first: `rm cache/*.json`.
+
+---
+
+## Web UI (optional)
+
+A localhost web view of the same engine — edit the brief in the browser and re-score live.
+
+```bash
+py -m pip install flask
+py web.py            # then open http://127.0.0.1:5000
+```
+
+It renders the recommended itinerary as cards (with match scores and red-eye / nonstop /
+loyalty tags), the runner-up, the tradeoffs, and the scoring weights. The CLI and the web
+UI share `scoring.py` and `config.py`, so they always produce identical results.
 
 ---
 

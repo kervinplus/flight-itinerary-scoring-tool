@@ -147,11 +147,9 @@ def _parse_preferences(text: str):
     return prefs
 
 
-def parse_brief(path: str) -> dict:
-    """Parse a trip-brief .txt file into the structured dict the tool consumes."""
-    with open(path, "r", encoding="utf-8") as f:
-        text = f.read()
-
+def parse_text(text: str) -> dict:
+    """Parse trip-brief text (already loaded) into the structured dict the tool uses.
+    Shared by the CLI (file input) and the web UI (textarea input)."""
     # Traveler
     count_m = re.search(r"(\d+)\s+passenger", text, re.I)
     home_m = re.search(r"HOME AIRPORT:\s*([A-Z]{3})", text)
@@ -193,6 +191,12 @@ def parse_brief(path: str) -> dict:
         "legs": legs,
         "preferences": _parse_preferences(text),
     }
+
+
+def parse_brief(path: str) -> dict:
+    """Read a trip-brief .txt file and parse it into the structured dict."""
+    with open(path, "r", encoding="utf-8") as f:
+        return parse_text(f.read())
 
 
 if __name__ == "__main__":
