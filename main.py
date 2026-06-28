@@ -35,8 +35,11 @@ def stops_label(option) -> str:
     n = scoring.num_stops(option)
     if n == 0:
         return "Nonstop"
-    vias = ",".join(f["arrival_airport"]["id"] for f in option["flights"][:-1])
-    return f"{n} stop via {vias}"
+    vias = [f["arrival_airport"]["id"] for f in option["flights"][:-1]]
+    mins = scoring.layover_minutes(option)
+    # show each layover airport + duration, e.g. "1 stop via DFW (1h 30m layover)"
+    parts = [f"{v} ({fmt_dur(m)} layover)" for v, m in zip(vias, mins)]
+    return f"{n} stop via {', '.join(parts)}"
 
 
 def _airport(value):
