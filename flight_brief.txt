@@ -1,0 +1,24 @@
+TRAVELER: 1 passenger (founder)
+HOME AIRPORT: SFO (OAK/SJC acceptable only if clearly better)
+
+LEG 1: SFO → BOS
+  Date: Mon Jul 13, 2026
+  HARD CONSTRAINT: land in Boston by 5:00pm ET (dinner at 7pm)
+
+LEG 2: BOS → NYC (JFK or LGA; EWR acceptable)
+  Date: Wed Jul 15, 2026, depart after 3:00pm (summit ends 2pm, needs ~1hr to airport)
+  Must arrive NYC by end of day Jul 15
+
+LEG 3: NYC → SFO
+  Date: Fri Jul 17, 2026
+  PREFERENCES: no red-eye; land at SFO before midnight Jul 17
+
+SCORING PREFERENCES (intentionally conflicting):
+  - Total budget target: under $1,500
+  - BUT: will pay up to $400 MORE to avoid a red-eye OR save 3+ hours travel time
+  - Nonstop strongly preferred; connection OK only if saves >$250 or is only option
+  - Layovers: 45 min minimum, 2.5 hrs maximum
+  - Airline: mild preference for United/partners (founder has status) — small bonus, NOT hard rule
+  - Fare class: NO basic economy (needs seat selection + miles)
+  - Bags: carry-on only. Seat: aisle preferred
+  - Dislikes departures before 7:00am

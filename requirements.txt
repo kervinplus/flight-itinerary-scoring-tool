@@ -1,0 +1,6 @@
+# Only needed for LIVE SerpAPI calls. The tool runs fully on cache/sample data
+# without any dependencies installed.
+requests>=2.31.0
+
+# Optional: the official SerpAPI SDK is an alternative to plain requests.
+# google-search-results>=2.4.2

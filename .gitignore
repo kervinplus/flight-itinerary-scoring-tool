@@ -1,0 +1,9 @@
+# Never commit the real key
+.env
+
+# Cached API responses (regenerate from the brief)
+cache/*.json
+
+# Python
+__pycache__/
+*.pyc
