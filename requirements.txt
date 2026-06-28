@@ -1,8 +1,6 @@
-# For LIVE SerpAPI calls. The CLI runs fully on cache/sample data without this.
+# Only needed for LIVE SerpAPI calls. The tool runs fully on cache/sample data
+# without any dependencies installed.
 requests>=2.31.0
-
-# For the optional localhost web UI (web.py). Not needed for the CLI.
-flask>=3.0.0
 
 # Optional: the official SerpAPI SDK is an alternative to plain requests.
 # google-search-results>=2.4.2
