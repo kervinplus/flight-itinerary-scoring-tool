@@ -202,11 +202,32 @@ PAGE = """<!doctype html>
 </div></body></html>"""
 
 
+def _free_port(start=5000, end=5050):
+    """Find a port nothing is listening on (avoids 'address in use' / blocked 5000)."""
+    import socket
+    for p in range(start, end):
+        with socket.socket() as s:
+            if s.connect_ex(("127.0.0.1", p)) != 0:
+                return p
+    return start
+
+
 if __name__ == "__main__":
     if "--selftest" in sys.argv:
         with app.test_client() as c:
             resp = c.get("/")
             print(f"selftest: HTTP {resp.status_code}, {len(resp.data)} bytes")
             sys.exit(0 if resp.status_code == 200 else 1)
-    print("Serving at http://127.0.0.1:5000  (Ctrl+C to stop)")
-    app.run(host="127.0.0.1", port=5000, debug=False)
+
+    import threading
+    import webbrowser
+
+    port = _free_port()
+    url = f"http://127.0.0.1:{port}"
+    print("=" * 50)
+    print(f"  Flight tool running at:  {url}")
+    print("  Opening your browser... (Ctrl+C here to stop)")
+    print("=" * 50)
+    # open the browser a moment after the server starts listening
+    threading.Timer(1.2, lambda: webbrowser.open(url)).start()
+    app.run(host="127.0.0.1", port=port, debug=False)
